@@ -13,10 +13,11 @@
             @click='playSound("http://bit.ly/2HHjJio")'
             > gif
           </kendo-button>
+          <input type="radio" v-model="selected" name="vote" :value="1" />
           <kendo-button
             icon='volume-down'
-            @click='playSound("http://bit.ly/2plm002")'
-            > gif
+            @click='playSound("http://bit.ly/2plmOO2")'
+            > jif
           </kendo-button>
         </div>
         <div class="term-voting">
@@ -41,13 +42,17 @@ export default {
   },
   methods: {
     playSound (sound) {
-      // if(sound){
-      //   let audio = new Audio(sound)
-      //   audio.play(play)
-      // }
+      if (sound) {
+        let audio = new Audio(sound)
+        audio.play(sound)
+      }
     },
     onVote () {
-      alert()
+      if (this.selected) this.pronunciation2Votes++
+      else this.pronunciation1Votes++
+      console.log(
+        '1: %s, 2: %s', this.pronunciation1Votes, this.pronunciation2Votes
+      )
     }
   }
 }
