@@ -24,6 +24,8 @@
           <kendo-button class='k-primary' @click='onVote'>
             VOTE
           </kendo-button>
+          <img src="https://media.giphy.com/media/wsEX8uMrTRDoI/giphy.gif" />
+          
         </div>
       </div>
     </div>
