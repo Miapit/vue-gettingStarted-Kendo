@@ -24,23 +24,23 @@
           <kendo-button class='k-primary' @click='onVote'>
             VOTE
           </kendo-button>
-          <div class="term-voting">
-            <h2> Voting Results </h2>
-            <div class="term-vote-chart">
-              <kendo-chart 
-                :series-defaults-type="'donut'"
-                :chart-area-nackground="''"
-                :series="series"
-                :tooltip="tooltip" >
-              </kendo-chart>
-            </div>
-          </div>          
-          
-          <img src="https://media.giphy.com/media/wsEX8uMrTRDoI/giphy.gif" />
         </div>
       </div>
-    </div>
-  </div>
+      <div class="term-voting">
+        <h2> Voting Results </h2>
+        <div class="term-vote-chart">
+          <kendo-chart 
+            :series-defaults-type="'donut'"
+            :chart-area-background="''"
+            :series="series"
+            :tooltip="tooltip" >
+          </kendo-chart>
+            </div>
+          </div>          
+          <!-- <img src="https://media.giphy.com/media/wsEX8uMrTRDoI/giphy.gif" /> -->
+        </div>
+      </div>
+
 </template>
 
 <script>
@@ -64,9 +64,6 @@ export default {
     onVote () {
       if (this.selected) this.pronunciation2Votes++
       else this.pronunciation1Votes++
-      console.log(
-        '1: %s, 2: %s', this.pronunciation1Votes, this.pronunciation2Votes
-      )
     }
   },
   computed: {
@@ -90,5 +87,34 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+.term-box {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: solid black 3px;
+  height: 235px;
+  margin: 1em auto;
+  max-width: 800px;
+  padding: 5px;
+}
 
+.term {
+  border-right: solid black 1px;
+  float: left;
+  padding: 10px;
+  width: 45%;
+}
+
+.submit-vote {
+  float: right;
+  margin: 5px 5px 0 0;
+}
+
+.term-voting {
+  float: right;
+  padding: 10px;
+  text-align: right;
+}
+
+.k-chart {
+  height: 200px;
+}
 </style>
