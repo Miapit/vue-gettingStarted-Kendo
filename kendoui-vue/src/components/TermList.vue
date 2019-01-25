@@ -24,8 +24,19 @@
           <kendo-button class='k-primary' @click='onVote'>
             VOTE
           </kendo-button>
-          <img src="https://media.giphy.com/media/wsEX8uMrTRDoI/giphy.gif" />
+          <div class="term-voting">
+            <h2> Voting Results </h2>
+            <div class="term-vote-chart">
+              <kendo-chart 
+                :series-defaults-type="'donut'"
+                :chart-area-nackground="''"
+                :series="series"
+                :tooltip="tooltip" >
+              </kendo-chart>
+            </div>
+          </div>          
           
+          <img src="https://media.giphy.com/media/wsEX8uMrTRDoI/giphy.gif" />
         </div>
       </div>
     </div>
@@ -39,7 +50,8 @@ export default {
     return {
       selected: 0,
       pronunciation1Votes: 0,
-      pronunciation2Votes: 0
+      pronunciation2Votes: 0,
+      tooltip: {visible: true, template: '#= value # votes'}
     }
   },
   methods: {
@@ -56,7 +68,23 @@ export default {
         '1: %s, 2: %s', this.pronunciation1Votes, this.pronunciation2Votes
       )
     }
+  },
+  computed: {
+    series: function () {
+      return [{
+        data: [{
+          category: 'gif',
+          value: this.pronunciation1Votes,
+          color: '#fff258'
+        }, {
+          category: 'jif',
+          value: this.pronunciation2Votes,
+          color: '#58d9ff'
+        }]
+      }]
+    }
   }
+
 }
 </script>
 
